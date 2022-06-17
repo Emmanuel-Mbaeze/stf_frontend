@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
+
 const Card = () => {
   const [post, setPost] = useState([]);
 
@@ -52,11 +53,11 @@ const Description = styled.div`
 const Text = styled.div`
   width: 300px;
   min-height: 60px;
+  // background-color: red;
 
   @media (max-width: 320px) {
     width: 280px;
   }
-  /* background-color: yellow; */
 `;
 const Image = styled.img`
   width: 300px;
@@ -69,7 +70,7 @@ const Image = styled.img`
 `;
 const Hold = styled.div`
   width: 300px;
-  min-height: 300px;
+  min-height: 325px;
   border-radius: 6px;
   display: flex;
   flex-direction: column;
@@ -79,6 +80,7 @@ const Hold = styled.div`
 
   /* background-color: red; */
   margin: 20px;
+  padding-bottom: 10px;
   @media (max-width: 320px) {
     width: 280px;
   }

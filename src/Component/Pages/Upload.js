@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../Header/Header";
+import pix from "../Pages/user.png";
 
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -13,8 +14,18 @@ import { addcontent } from "../Global/Globalstate";
 import { useDispatch, useSelector } from "react-redux";
 
 const Upload = () => {
+  const [image, setImage] = useState("");
+  const [avatar, setAvatar] = useState(pix);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const handleImage = (e) => {
+    const file = e.target.files[0];
+    const save = URL.createObjectURL(file);
+    setAvatar(save);
+    setImage(file);
+  };
 
   const yupSchema = yup.object().shape({
     title: yup.string().required("This field should be filled"),
@@ -35,7 +46,21 @@ const Upload = () => {
     const local = "http://localhost:9091";
     const url = `${local}/api/content/create/${id}`;
 
-    await axios.post(url, { message, title }).then((res) => {
+    const formData = new FormData();
+    formData.append("message", message);
+    formData.append("title", title);
+    formData.append("image", image);
+
+    const config = {
+      "content-type": "multipart/form-data",
+      onUploadProgress: (ProgressEvent) => {
+        const { loaded, total } = ProgressEvent;
+        const percent = Math.floor((loaded * 100) / total);
+        console.log(percent);
+      },
+    };
+
+    await axios.post(url, formData, config).then((res) => {
       dispatch(addcontent(res.data.data));
       console.log(res.data.data);
     });
@@ -45,7 +70,17 @@ const Upload = () => {
     <>
       {/* <Header /> */}
       <Container>
-        <Wrapper onSubmit={onSubmit}>
+        <Wrapper onSubmit={onSubmit} type="multipart/form-data">
+          <ImageHolder>
+            <Image src={avatar} />
+            <ImageLabel htmlFor="pix">Upload Image</ImageLabel>
+            <ImageInput
+              id="pix"
+              onChange={handleImage}
+              type="file"
+              accept="avatar/*"
+            />
+          </ImageHolder>
           <Title {...register("title")} placeholder="Title"></Title>
           <Card>
             <textarea
@@ -53,8 +88,6 @@ const Upload = () => {
               placeholder="Input Description"
             />
           </Card>
-          {/* <Date placeholder="Date"></Date> */}
-          {/* <Time placeholder="Time"></Time> */}
           <Button>
             <button type="submit">Upload</button>
           </Button>
@@ -65,54 +98,96 @@ const Upload = () => {
 };
 
 export default Upload;
+const ImageHolder = styled.div`
+  /* width: 90%; */
+  width: 100%;
+  height: 290px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 15px;
+  /* background-color: red; */
+  margin-top: -15px;
+`;
+const ImageInput = styled.input`
+  display: none;
+`;
+const ImageLabel = styled.label`
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  border-radius: 3px;
+  transition: all 350ms;
+  :hover {
+    cursor: pointer;
+    transform: scale(1.01);
+  }
+`;
+const Image = styled.img`
+  width: 99%;
+  height: 223px;
+  object-fit: cover;
+  border: 2.2px solid black;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+
+  transition: all 350ms;
+  :hover {
+    cursor: pointer;
+    transform: scale(1.01);
+  }
+`;
 
 const Container = styled.div`
   width: 100%;
-  min-height: 90vh;
-  /* background-color: black; */
+  min-height: 91vh;
+  height: 100%;
+  /* background-color: yellow; */
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 10px;
 `;
 const Wrapper = styled.form`
-  width: 30%;
-  min-height: 45vh;
+  /* width: 30%; */
+  width: 400px;
+  min-height: 600px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  /* background-color: white; */
   align-items: center;
   box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.3);
 
-  /* margin-bottom: 25px; */
+  @media (min-width: 390px) and (max-width: 428px) {
+    width: 380px;
+  }
   @media (max-width: 320px) {
-    width: 85%;
-    min-height: 350px;
-    /* background-color: black; */
+    width: 305px;
   }
-  @media (min-width: 375px) and (max-width: 428px) {
-    width: 75%;
-    min-height: 350px;
-    /* background-color: black; */
+  @media (min-width: 360px) and (max-width: 375px) {
+    width: 345px;
   }
-  @media (min-width: 768px) and (max-width: 834px) {
-    width: 45%;
-    min-height: 350px;
-    /* background-color: black; */
+  @media (min-width: 760px) and (max-width: 834px) {
   }
 `;
 const Card = styled.div`
-  width: 250px;
-  height: 107px;
+  width: 90%;
+  height: 117px;
   textarea {
-    width: 247px;
-    min-height: 100px;
+    width: 100%;
+    min-height: 110px;
     border: 1.5px solid lightgrey;
     outline: none;
     resize: none;
   }
 `;
 const Title = styled.input`
-  width: 250px;
+  width: 90%;
   height: 37px;
   border: none;
   outline: none;
@@ -120,26 +195,14 @@ const Title = styled.input`
   border: 1.5px solid lightgrey;
 `;
 
-const Date = styled.input`
-  width: 250px;
-  height: 37px;
-  border: 1px solid purple;
-  outline: none;
-  border-radius: 4px;
-`;
-const Time = styled.input`
-  width: 250px;
-  height: 37px;
-  border: 1px solid purple;
-  outline: none;
-  border-radius: 4px;
-`;
 const Button = styled.div`
   button {
-    padding: 12px 24px;
+    padding: 14px 34px;
     border: 1.5px solid grey;
     background-color: black;
     color: white;
+    font-size: 14px;
+    font-weight: 600;
     border-radius: 5px;
     outline: none;
   }

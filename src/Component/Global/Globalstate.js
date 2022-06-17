@@ -21,7 +21,7 @@ const Globalstate = createSlice({
     },
 
     signOut: (state) => {
-      state.user = null;
+      state.current = null;
     },
   },
 });

@@ -1,28 +1,52 @@
 import React from "react";
 import styled from "styled-components";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { signOut } from "../Global/Globalstate";
+import { useDispatch, useSelector } from "react-redux";
+
 const Header = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.current);
   return (
     <Container>
       <Logo>
         <img src="/images/stf.jpg" />
       </Logo>
-      <Navhold>
-        <Navs to="/">Home</Navs>
-        <Navs to="/card">Portfolio</Navs>
-        <Navs to="/Booking">Book a service</Navs>
-        <Navs to="/upload">Upload</Navs>
-        <Navs to="/card">About</Navs>
-      </Navhold>
-      <Buttons>
-        <Button1 to="/Signin">
-          <button>Login</button>
-        </Button1>
-        <Button2 to="/Signup">
-          <button>Register</button>
-        </Button2>
-      </Buttons>
+      {user ? (
+        <Wrap>
+          <Navhold>
+            <Navs to="/">Home</Navs>
+            <Navs to="/card">Gallery</Navs>
+            <Navs to="/Booking">Book a service</Navs>
+            <Navs to="/upload">Upload</Navs>
+            <Navs to="/card">About</Navs>
+          </Navhold>
+          <Buttons>
+            <Button2 to="/Signin">
+              <button
+                onClick={() => {
+                  dispatch(signOut());
+                  navigate("/Signin");
+                }}
+              >
+                LogOut
+              </button>
+            </Button2>
+          </Buttons>
+        </Wrap>
+      ) : (
+        <Buttons>
+          <Button1 to="/Signin">
+            <button>Login</button>
+          </Button1>
+          <Button2 to="/Signup">
+            <button>Register</button>
+          </Button2>
+        </Buttons>
+      )}
+
       <Icons>
         <AiOutlineMenu
           id="Menu"
@@ -46,19 +70,37 @@ const Header = () => {
         />
       </Icons>
       <Sidebar id="sidebar">
-        <Hold>
-          <Nav>Home</Nav>
-          <Nav>Blog</Nav>
-          <Nav>Portfolio</Nav>
-          <Nav>Book a service</Nav>
-          <Nav>About</Nav>
-          <Button3>
-            <button>Login</button>
-          </Button3>
-          <Button4>
-            <button>Register</button>
-          </Button4>
-        </Hold>
+        {user ? (
+          <Hold>
+            <Nav to="/">Home</Nav>
+            <Nav to="/card">Gallery</Nav>
+            <Nav to="/Booking">Book a service</Nav>
+            <Nav to="/upload">Upload</Nav>
+            <Nav to="/card">About</Nav>
+            <Button3 to="/Signin">
+              <button
+                onClick={() => {
+                  dispatch(signOut());
+                  navigate("/Signin");
+                }}
+              >
+                Logout
+              </button>
+            </Button3>
+          </Hold>
+        ) : (
+          <Hold>
+            {/* <Logo>
+              <img src="/images/stf.jpg" />
+            </Logo> */}
+            <Button3 to="/Signin">
+              <button>Login</button>
+            </Button3>
+            <Button4 to="/Signup">
+              <button>Register</button>
+            </Button4>
+          </Hold>
+        )}
       </Sidebar>
     </Container>
   );
@@ -66,7 +108,13 @@ const Header = () => {
 
 export default Header;
 // const Container = styled.div``
-const Button4 = styled.div`
+const Wrap = styled.div`
+  /* background-color: rebeccapurple; */
+  /* width: 40%; */
+  /* height: 70px; */
+  display: flex;
+`;
+const Button4 = styled(Link)`
   :hover > button {
     background-color: transparent;
     border: 2px solid white;
@@ -88,7 +136,7 @@ const Button4 = styled.div`
     margin-top: 30px;
   }
 `;
-const Button3 = styled.div`
+const Button3 = styled(Link)`
   :hover > button {
     background-color: transparent;
     border: 2px solid white;
@@ -112,11 +160,13 @@ const Button3 = styled.div`
     margin-left: 20px;
   }
 `;
-const Nav = styled.div`
+const Nav = styled(Link)`
   margin-top: 40px;
   font-weight: bold;
   font-size: 16px;
   cursor: pointer;
+  text-decoration: none;
+  color: black;
 `;
 const Logos = styled.div`
   img {
@@ -142,7 +192,7 @@ const Sidebar = styled.div`
   overflow: hidden;
   top: 0;
   left: 0;
-  @media (max-width: 768px) {
+  @media (max-width: 834px) {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -154,7 +204,7 @@ const Icons = styled.div`
   font-weight: bolder;
   display: none;
   cursor: pointer;
-  @media (max-width: 768px) {
+  @media (max-width: 834px) {
     display: block;
   }
 `;
@@ -203,7 +253,7 @@ const Button1 = styled(Link)`
 const Buttons = styled.div`
   display: flex;
   align-items: center;
-  @media (max-width: 768px) {
+  @media (max-width: 834px) {
     display: none;
   }
 `;
@@ -216,7 +266,7 @@ const Navs = styled(Link)`
   color: white;
 `;
 const Navhold = styled.div`
-  @media (max-width: 768px) {
+  @media (max-width: 834px) {
     display: none;
   }
   display: flex;
@@ -233,5 +283,6 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* z-index: 1000; */
   background-color: black;
 `;

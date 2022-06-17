@@ -176,7 +176,7 @@ const ImageLabel = styled.label`
 const Image = styled.img`
   width: 100px;
   height: 100px;
-  object-fit: contain;
+  object-fit: cover;
   border: 2.2px solid black;
   border-radius: 100%;
   display: flex;
@@ -192,7 +192,7 @@ const Image = styled.img`
   }
 `;
 const Right = styled.div`
-  @media (max-width: 768px) {
+  @media (max-width: 950px) {
     flex: 1;
   }
   flex: 0.5;
@@ -204,12 +204,12 @@ const Right = styled.div`
   // background-color: royalblue;
 `;
 const Left = styled.div`
-  @media (max-width: 1000px) {
+  @media (max-width: 950px) {
     display: none;
   }
   flex: 0.6;
   min-height: 90px;
-  background-image: url("/images/ss.JPEG");
+  background-image: url("/images/sss.JPEG");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -221,11 +221,17 @@ const Wrapper = styled.div`
   min-height: 80vh;
   display: flex;
   margin-top: 15px;
+  @media (max-width: 768px) {
+    /* background-color: red; */
+    width: 81%;
+  }
 `;
 const Container = styled.div`
   width: 100%;
   min-height: 90vh;
   background-position: center;
+  margin-top: 20px;
+
   background-size: cover;
   display: flex;
   justify-content: center;

@@ -24,6 +24,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Card from "./Component/Card/Card";
+import Private from "./Component/Global/Private";
 import Header from "./Component/Header/Header";
 import Home from "./Component/Homescreen/Home";
 import Booking from "./Component/Pages/Booking";
@@ -36,12 +37,42 @@ const App = () => {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/card" element={<Card />} />
+        <Route
+          path="/"
+          element={
+            <Private>
+              <Home />
+            </Private>
+          }
+        />
+        <Route
+          path="/card"
+          element={
+            <Private>
+              {" "}
+              <Card />
+            </Private>
+          }
+        />
         <Route path="/Signup" element={<SIgnup />} />
         <Route path="/Signin" element={<Signin />} />
-        <Route path="/upload" element={<Upload />} />
-        <Route path="/Booking" element={<Booking />} />
+        <Route
+          path="/upload"
+          element={
+            <Private>
+              {" "}
+              <Upload />
+            </Private>
+          }
+        />
+        <Route
+          path="/Booking"
+          element={
+            <Private>
+              <Booking />
+            </Private>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

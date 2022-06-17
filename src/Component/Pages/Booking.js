@@ -77,38 +77,33 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 25px;
 `;
 const Wrapper = styled.form`
-  width: 30%;
-  min-height: 65vh;
+  width: 400px;
+  min-height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.3);
 
-  /* margin-bottom: 25px; */
+  @media (min-width: 390px) and (max-width: 428px) {
+    width: 380px;
+  }
   @media (max-width: 320px) {
-    width: 85%;
-    min-height: 350px;
-    /* background-color: black; */
+    width: 305px;
   }
-  @media (min-width: 375px) and (max-width: 428px) {
-    width: 75%;
-    min-height: 350px;
-    /* background-color: black; */
-  }
-  @media (min-width: 768px) and (max-width: 834px) {
-    width: 45%;
-    min-height: 350px;
-    /* background-color: black; */
+  @media (min-width: 360px) and (max-width: 375px) {
+    width: 345px;
   }
 `;
 const Card = styled.div`
-  width: 250px;
+  width: 90%;
+  /* background-color: gold; */
   height: 107px;
   textarea {
-    width: 247px;
+    width: 98%;
     min-height: 100px;
     border: 1.5px solid lightgrey;
     outline: none;
@@ -116,7 +111,7 @@ const Card = styled.div`
   }
 `;
 const Title = styled.input`
-  width: 250px;
+  width: 90%;
   height: 37px;
   border: none;
   outline: none;
@@ -125,7 +120,7 @@ const Title = styled.input`
 `;
 
 const Date = styled.input`
-  width: 250px;
+  width: 90%;
   height: 37px;
   border: none;
   outline: none;
@@ -133,7 +128,7 @@ const Date = styled.input`
   border: 1.5px solid lightgrey;
 `;
 const Time = styled.input`
-  width: 250px;
+  width: 90%;
   height: 37px;
   border: none;
   outline: none;

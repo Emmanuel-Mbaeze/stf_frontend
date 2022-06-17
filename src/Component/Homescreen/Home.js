@@ -1,12 +1,10 @@
 import React from "react";
-import Card from "../Card/Card";
-import Header from "../Header/Header";
-
+import Slider from "../Pages/Slider";
 const Home = () => {
   return (
     <div>
-      {/* <Header /> */}
-      <Card />
+      <Slider />
+      <h4>Home of photography</h4>
     </div>
   );
 };

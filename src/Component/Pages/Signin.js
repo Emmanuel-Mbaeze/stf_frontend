@@ -82,7 +82,7 @@ const Error = styled.div`
 `;
 
 const Right = styled.div`
-  @media (max-width: 768px) {
+  @media (max-width: 950px) {
     flex: 1;
   }
   flex: 0.5;
@@ -93,7 +93,7 @@ const Right = styled.div`
   /* background-color: royalblue; */
 `;
 const Left = styled.div`
-  @media (max-width: 768px) {
+  @media (max-width: 950px) {
     display: none;
   }
   flex: 0.6;
@@ -109,6 +109,10 @@ const Wrapper = styled.div`
   width: 75%;
   min-height: 80vh;
   display: flex;
+  @media (max-width: 768px) {
+    /* background-color: red; */
+    width: 81%;
+  }
 `;
 const Container = styled.div`
   width: 100%;
@@ -118,6 +122,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 20px;
   /* background-color: green; */
 `;
 
