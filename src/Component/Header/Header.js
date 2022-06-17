@@ -21,7 +21,7 @@ const Header = () => {
             <Navs to="/card">Gallery</Navs>
             <Navs to="/Booking">Book a service</Navs>
             <Navs to="/upload">Upload</Navs>
-            <Navs to="/card">About</Navs>
+            <Navs to="/About">About</Navs>
           </Navhold>
           <Buttons>
             <Button2 to="/Signin">
@@ -76,7 +76,7 @@ const Header = () => {
             <Nav to="/card">Gallery</Nav>
             <Nav to="/Booking">Book a service</Nav>
             <Nav to="/upload">Upload</Nav>
-            <Nav to="/card">About</Nav>
+            <Nav to="/About">About</Nav>
             <Button3 to="/Signin">
               <button
                 onClick={() => {
@@ -285,4 +285,6 @@ const Container = styled.div`
   align-items: center;
   /* z-index: 1000; */
   background-color: black;
+  /* position: fixed;
+  width: 80%; */
 `;

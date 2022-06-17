@@ -98,7 +98,7 @@ const Left = styled.div`
   }
   flex: 0.6;
   min-height: 90px;
-  background-image: url("/images/sss.JPEG");
+  background-image: url("/images/2.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

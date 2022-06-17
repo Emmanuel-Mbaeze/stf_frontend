@@ -73,11 +73,12 @@ export default Booking;
 const Container = styled.div`
   width: 100%;
   min-height: 90vh;
+  background-color: rgba(0, 0, 0, 0.9);
+
   /* background-color: black; */
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 25px;
 `;
 const Wrapper = styled.form`
   width: 400px;
@@ -85,8 +86,12 @@ const Wrapper = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  background-color: white;
+  border-radius: 10px;
+  margin-top: 20px;
+
   align-items: center;
-  box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 
   @media (min-width: 390px) and (max-width: 428px) {
     width: 380px;

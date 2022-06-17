@@ -17,7 +17,7 @@ export default function Home() {
     },
     {
       id: 3,
-      title: "The World without Photography Will Be Meaningless.",
+      title: "Photography Adds Color To The World.",
       author: "stfcreate",
       image: "/images/7.jpg",
     },
@@ -25,7 +25,7 @@ export default function Home() {
       id: 4,
       title: "Photos Inspired By People I Photograph.",
       author: "stfcreate",
-      image: "/images/s.jpeg",
+      image: "/images/9.jpg",
     },
   ];
 
@@ -38,7 +38,7 @@ export default function Home() {
   useEffect(() => {
     setInterval(() => {
       setCount((el) => el + 1);
-    }, 30000);
+    }, 90000);
   }, []);
 
   return (
@@ -67,6 +67,9 @@ const Container = styled.div`
   height: 77vh;
   flex-direction: column;
   position: relative;
+  @media (max-width: 320px) {
+    height: 64vh;
+  }
   /* background-color: pink; */
 `;
 const Content = styled.div`
@@ -74,10 +77,16 @@ const Content = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 70vh;
-  /* background-color: blue; */
   margin-top: 80px;
   padding-top: 100px;
   z-index: 1;
+  @media (max-width: 428px) {
+    padding-top: 160px;
+    /* background-color: blue; */
+  }
+  @media (max-width: 320px) {
+    /* padding-top: -40px; */
+  }
 `;
 const Background = styled.div`
   top: 0;
@@ -98,7 +107,11 @@ const Tag = styled.div`
   margin: 10px;
   margin-top: 150px;
 `;
-const Author = styled.div``;
+const Author = styled.div`
+  @media (max-width: 320px) {
+    display: none;
+  }
+`;
 const Span = styled.span`
   border: 2px solid #fff;
   border-radius: 15px;
@@ -107,13 +120,30 @@ const Span = styled.span`
 const Info = styled.h2`
   font-size: 3rem;
   width: 650px;
-  color: #eeee;
-  /* background-color: violet; */
+  @media (max-width: 425px) {
+    /* background-color: gold; */
+    width: 80%;
+    font-size: 1.3rem;
+    color: #ffff;
+  }
+  @media (max-width: 320px) {
+    min-width: 100vw;
+    font-size: 5px;
+    color: #ffff;
+    text-align: center;
+    /* background-color: green; */
+  }
+  @media (max-width: 428px) {
+    width: 80%;
+    font-size: 1.7rem;
+    color: #ffff;
+  }
 `;
 const Details = styled.div`
   display: flex;
   justify-content: flex-end;
   margin: 10px;
+
   /* background-color: gold; */
 `;
 const Border = styled.div`

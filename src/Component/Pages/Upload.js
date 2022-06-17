@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../Header/Header";
 import pix from "../Pages/user.png";
-
+import { AiOutlineCloudUpload } from "react-icons/ai";
+import { FaUser } from "react-icons/fa";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -146,11 +147,12 @@ const Container = styled.div`
   width: 100%;
   min-height: 91vh;
   height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+
   /* background-color: yellow; */
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
 `;
 const Wrapper = styled.form`
   /* width: 30%; */
@@ -159,10 +161,12 @@ const Wrapper = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  /* background-color: white; */
+  background-color: white;
+  margin-top: 20px;
   align-items: center;
-  box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
 
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   @media (min-width: 390px) and (max-width: 428px) {
     width: 380px;
   }

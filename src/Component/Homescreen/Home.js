@@ -1,10 +1,16 @@
 import React from "react";
+import Card from "../Card/Card";
 import Slider from "../Pages/Slider";
 const Home = () => {
   return (
-    <div>
+    <div
+      style={{
+        backgroundColor: "rgba(0, 0, 0, 0.9)",
+      }}
+    >
       <Slider />
-      <h4>Home of photography</h4>
+      <Card />
+      <h4>Home of all photography</h4>
     </div>
   );
 };

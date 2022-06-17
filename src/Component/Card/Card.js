@@ -78,7 +78,7 @@ const Hold = styled.div`
   justify-content: space-between;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 
-  /* background-color: red; */
+  background-color: white;
   margin: 20px;
   padding-bottom: 10px;
   @media (max-width: 320px) {
