@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Card from "./Component/Card/Card";
+import Footer from "./Component/Footer/Footer";
 import Private from "./Component/Global/Private";
 import Header from "./Component/Header/Header";
 import Home from "./Component/Homescreen/Home";
