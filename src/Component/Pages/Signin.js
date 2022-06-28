@@ -27,7 +27,9 @@ const Signin = () => {
     console.log(value);
     const { email, password } = value;
     const local = "http://localhost:9091";
-    const url = `${local}/api/user/signin`;
+    const online = "https://stfback.herokuapp.com";
+
+    const url = `${online}/api/user/signin`;
 
     await axios.post(url, { email, password }).then((res) => {
       console.log(res.data.data);

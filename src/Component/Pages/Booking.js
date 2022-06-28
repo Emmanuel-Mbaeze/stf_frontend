@@ -35,7 +35,9 @@ const Booking = () => {
     const { message, title, fullname, location } = val;
 
     const local = "http://localhost:9091";
-    const url = `${local}/api/book/create/${id}`;
+    const online = "https://stfback.herokuapp.com";
+
+    const url = `${online}/api/book/create/${id}`;
 
     await axios
       .post(url, { message, title, fullname, location })

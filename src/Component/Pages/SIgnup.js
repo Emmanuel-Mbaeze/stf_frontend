@@ -39,8 +39,9 @@ const SIgnup = () => {
   const onSubmit = handleSubmit(async (value) => {
     console.log(value);
     const { fullname, email, username, password } = value;
-    const local = "http://localhost:9091";
-    const url = `${local}/api/user/register`;
+    // const local = "http://localhost:9091";
+    const online = "https://stfback.herokuapp.com";
+    const url = `${online}/api/user/register`;
 
     const formData = new FormData();
     formData.append("fullname", fullname);

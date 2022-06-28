@@ -44,8 +44,9 @@ const Upload = () => {
     console.log(val);
     const { message, title } = val;
 
-    const local = "http://localhost:9091";
-    const url = `${local}/api/content/create/${id}`;
+    // const local = "http://localhost:9091";
+    const online = "https://stfback.herokuapp.com";
+    const url = `${online}/api/content/create/${id}`;
 
     const formData = new FormData();
     formData.append("message", message);

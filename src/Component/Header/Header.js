@@ -11,7 +11,9 @@ const Header = () => {
   const user = useSelector((state) => state.current);
   return (
     <Container>
-      <Logo> </Logo>
+      <Logo>
+        <img src="/images/stf.jpg" />
+      </Logo>
       {user ? (
         <Wrap>
           <Navhold>
@@ -272,12 +274,9 @@ const Navhold = styled.div`
   margin-left: 90px;
 `;
 const Logo = styled.div`
-  width: 60px;
-  height: 60px;
-  background-image: url("/images/stf.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  img {
+    width: 60px;
+  }
 `;
 const Container = styled.div`
   padding: 3px 30px;
@@ -285,7 +284,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   /* z-index: 1000; */
-  background-color: pink;
+  background-color: black;
   /* position: fixed;
   width: 80%; */
 `;

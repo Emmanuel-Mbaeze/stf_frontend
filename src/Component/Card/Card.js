@@ -7,7 +7,9 @@ const Card = () => {
 
   const Posts = async () => {
     const local = "http://localhost:9091";
-    const url = `${local}/api/content/`;
+    const online = "https://stfback.herokuapp.com";
+
+    const url = `${online}/api/content/`;
     await axios.get(url).then((res) => {
       setPost(res.data.data);
       console.log(res.data.data);
